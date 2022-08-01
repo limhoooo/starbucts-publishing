@@ -207,7 +207,9 @@ header .badges .badge {
     top: 88px;
     left: -10px;
 }
-.visual .title .btn{}
+.visual .title .btn{
+    
+}
 .visual .cup1.image{
     position: absolute;
     bottom: 0;
