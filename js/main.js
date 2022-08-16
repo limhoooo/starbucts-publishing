@@ -45,13 +45,13 @@ fadeEls.forEach(el=>{
 });
 
 new Swiper('.notice-line .swiper-container', {
-        direction: 'vertical',
+        direction: 'vertical', // 수직
         autoplay : true,
         loop: true,
     }
 );
 new Swiper('.promotion .swiper-container', {
-        direction: 'horizontal',
+        direction: 'horizontal', // 수평
         slidesPerView: 3,
         spaceBetween: 10,
         centeredSlides: true,
