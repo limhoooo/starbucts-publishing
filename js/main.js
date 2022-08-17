@@ -64,8 +64,23 @@ new Swiper('.promotion .swiper-container', {
             clickable: true
         },
         navigation: {
-            prevEl: '.promotion swiper-prev',
-            nextEl: '.promotion swiper-next',
+            prevEl: '.promotion .swiper-prev',
+            nextEl: '.promotion .swiper-next',
         }
     }
 );
+
+const promtionEl = document.querySelector('.promotion');
+const promtionToggleBtn = document.querySelector('.toggle-promotion');
+let isHidePromtion = false;
+promtionToggleBtn.addEventListener('click', ()=>{
+    isHidePromtion = !isHidePromtion;
+    if(isHidePromtion){
+        promtionEl.classList.add('hide'); 
+        promtionToggleBtn.classList.add('bottom'); 
+    }else{
+        promtionEl.classList.remove('hide') 
+        promtionToggleBtn.classList.remove('bottom'); 
+    }
+    
+})
