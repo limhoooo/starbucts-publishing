@@ -70,6 +70,20 @@ new Swiper('.promotion .swiper-container', {
     }
 );
 
+new Swiper('.awards .swiper-container', {
+    // direction: 'horizontal', // 수평 슬라이드
+    autoplay: true, // 자동 재생 여부
+    loop: true, // 반복 재생 여부
+    spaceBetween: 30, // 슬라이드 사이 여백
+    slidesPerView: 5, // 한 번에 보여줄 슬라이드 개수
+    // slidesPerGroup: 5, // 한 번에 슬라이드 할 개수(전체 개수로 나뉘어야 함)
+    navigation: { // 슬라이드 이전/다음 버튼 사용 여부
+      prevEl: '.awards .swiper-prev', // 이전 버튼 선택자
+      nextEl: '.awards .swiper-next' // 다음 버튼 선택자
+    }
+  })
+  
+
 const promtionEl = document.querySelector('.promotion');
 const promtionToggleBtn = document.querySelector('.toggle-promotion');
 let isHidePromtion = false;
@@ -105,3 +119,15 @@ function floatingObject(selector, delay, size) {
  floatingObject('.floating1', 1, 15)
  floatingObject('.floating2', 0.5, 15)
  floatingObject('.floating3', 1.5, 20)
+
+//  요소(El)에 닿을때 class 를 toggle 해주는 function
+ const spyEls = document.querySelectorAll('section.scroll-spy');
+ spyEls.forEach((spyEl)=>{
+    new ScrollMagic
+        .Scene({
+            triggerElement : spyEl, // 보여짐의 여부를 감시할 요소를 지정
+            triggerHook: .8, // viewPort 감지될 위치 0(top) ~ 1(bottom)
+        })
+        .setClassToggle(spyEl, 'show')
+        .addTo(new ScrollMagic.Controller());
+ })
