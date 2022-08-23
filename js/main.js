@@ -17,23 +17,41 @@ searchInputEl.addEventListener('blur',()=>{
 })
 
 const badgeEl = document.querySelector('header .badges');
+const toTopEl = document.querySelector('#to-top')
 
 // _.throttle(함수,시간)
 window.addEventListener('scroll', _.throttle(
     ()=>{
-        window.scrollY > 500 ?  
+        if(window.scrollY > 500) {  
         // 배지 숨기기
         // gsap.to(요소,지속시간,옵션)
         gsap.to(badgeEl,.6,{
             opacity: 0,
             display : 'none'
-        }) : 
+        })
+        gsap.to(toTopEl, .2, {
+            x: 0
+          })
+        }else { 
         gsap.to(badgeEl,.6,{
             opacity: 1,
             display : 'block'
-        })
+        });
+        gsap.to(toTopEl, .2, {
+            x: 100
+          })
+    }
     },300
 ));
+
+// 상단으로 스크롤 버튼을 클릭하면,
+toTopEl.addEventListener('click', function () {
+    console.log('aaa');
+    // 페이지 위치를 최상단으로 부드럽게(0.7초 동안) 이동.
+    gsap.to(window, .7, {
+      scrollTo: 0
+    })
+  })
 
 const fadeEls = document.querySelectorAll('.visual .fade-in');
 fadeEls.forEach(el=>{
@@ -131,3 +149,9 @@ function floatingObject(selector, delay, size) {
         .setClassToggle(spyEl, 'show')
         .addTo(new ScrollMagic.Controller());
  })
+
+ /**
+ * 올해가 몇 년도인지 계산
+ */
+const thisYear = document.querySelector('.this-year')
+thisYear.textContent = new Date().getFullYear()
